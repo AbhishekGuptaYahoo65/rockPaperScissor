@@ -4,86 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <script src="script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </head>
-<body>
-    <h2 style=" display: flex; justify-content: center;">Rock Paper Scissor Game</h2>
-    <p style="display: flex; justify-content: center; padding-top: 20px;">Open the console to check the winner of the game</p>
-    <script>
-        //console.log("Hello World!");
-        function getComputerChoice(){
-            const randNumber = Math.random();
-            //console.log(randNumber);
-            if (randNumber < 0.33) {
-                return 'rock';
-            } else if (randNumber < 0.66) {
-                return 'paper';
-            } else {
-                return 'scissor';
-            }
-        }
-        //console.log(getComputerChoice());
-
-        function getHumanChoice(humanChoice){
-            if(humanChoice.toLowerCase() == "rock"){
-                return "rock";
-            }else if(humanChoice.toLowerCase() == "paper"){
-                return "paper";
-            }else if(humanChoice.toLowerCase() == "scissor"){
-                return "scissor";
-            }else{
-                return "Invalid Option";
-            }
-
-        }
-
-        const humanChoice = prompt("Which object do you want to choose: Rock, Paper or Scissor?");
-        //console.log(getHumanChoice(humanChoice));
-
-        let humanScore = 0;
-        let computerScore = 0;
-
-        function playRound(humanChoice, computerChoice){
-             const choices = ["rock", "paper", "scissor"];
-            if(humanChoice === computerChoice){
-                 console.log("It's a tie! Both chose " + humanChoice + " and " + computerChoice);
-              }else if (
-                (humanChoice === "rock" && computerChoice === "scissor") ||
-                (humanChoice === "scissor" && computerChoice === "paper") ||
-                (humanChoice === "paper" && computerChoice === "rock")
-            ) {
-                console.log("You win! " + humanChoice + " beats " + computerChoice + ".");
-                humanScore++;
-            } else {
-                console.log("You lose! " + computerChoice + " beats " + humanChoice + ".");
-                computerScore++;
-            }
-
-            
-
-         }
-
-        const humanSelection = getHumanChoice(humanChoice);
+    <body>
+        <div class = "root">
+            <h2 style=" display: flex; justify-content: center;">Rock Paper Scissor Game</h2>
+        </div>
         
-        
-
-        function playGame(){
-            for(let i=1;i<=5;i++){
-                console.log(i + " round winner");
-                const computerSelection = getComputerChoice();
-                playRound(humanSelection,computerSelection);
-                // console.log(humanScore);
-                // console.log(computerScore);
-            }
-            if(humanScore>computerScore) {
-                    console.log("Human won the match, total round out of 5 it won " + humanScore);
-                }else{
-                    console.log("Computer won the match, total round out of 5 it won " + computerScore);
-
-                }
-        }
-        playGame();
-
-    </script>
-    
-</body>
+        <!-- <p >Open the console to check the winner of the game</p> -->
+       <div style="display: flex; justify-content: center; padding-top: 20px;">
+        <button id = "rock">Rock</button>
+        <button id = "paper">Paper</button>
+        <button id = "scissor">Scissor</button>
+       </div> 
+       <div style="display: flex; justify-content: center; padding-top: 20px;" id="result"></div>
+    </body>
 </html>
